@@ -1,5 +1,4 @@
 
-#include "sensor.hpp"
 
 class LineSensor: public Sensor{
     public:
@@ -13,5 +12,5 @@ class LineSensor: public Sensor{
     double x;
     double y;
     int soglia,misura,misura_min,misura_max;
-    int decect_flag,calibra_flag;
+    int detect_flag,calibra_flag;
 };
