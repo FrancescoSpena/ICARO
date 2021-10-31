@@ -1,4 +1,4 @@
-
+#include "sensor.hpp"
 
 class LineSensor: public Sensor{
     public:
