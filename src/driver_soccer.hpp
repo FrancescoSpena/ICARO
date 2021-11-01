@@ -1,6 +1,6 @@
 
 #include "motor_soccer.hpp"
-#include "kinematic.h"
+#include "kinematic.hpp"
 
 class DriverSoccer{
     public:
