@@ -1,4 +1,4 @@
 
 
-main: *.cpp
+main: *.cpp 
 	g++ -o main *.cpp
