@@ -30,7 +30,7 @@ class DriverSoccer{
     void driver_handle(){
         Data *data = (Data*)malloc(sizeof(Data));
         Data_init(data,this->theta1,this->theta2,this->theta3);
-        cinematic_data(data);
+        cinematic_data_speed(data);
         for(int i=0;i<3;i++){
             double speed = 0;
             for(int j=0;j<3;j++){
