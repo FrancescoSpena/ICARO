@@ -2,6 +2,9 @@
 #include "motor_soccer.hpp"
 #include "kinematic.hpp"
 
+#define ROWS 3
+#define COLS 3
+
 class DriverSoccer{
     public:
     DriverSoccer(int theta1, int theta2, int theta3){
@@ -28,19 +31,16 @@ class DriverSoccer{
         this->speed_der[2] = theta;
     }
     void driver_handle(){
-        Data *data = (Data*)malloc(sizeof(Data));
-        Data_init(data,this->theta1,this->theta2,this->theta3);
-        cinematic_data_speed(data);
-        for(int i=0;i<3;i++){
-            double speed = 0;
-            for(int j=0;j<3;j++){
-                speed += data->cinematic_matrix[i][j]*this->speed_der[j];
-            }
-            this->motor[i].motor_setSpeed(speed*255);
+        if(isEmpty(this->matrix_pos)){
+            printf("Attention: Change values of matrix");
         }
 
-        for(int i=0;i<3;++i){
-            this->motor[i].motor_handle();
+    }
+    void driver_changeMatrix(){
+        for(int i=0; i < ROWS; i++){
+            for(int j=0;j<COLS;j++){
+                
+            }
         }
     }
     void driver_reset(){
@@ -54,6 +54,27 @@ class DriverSoccer{
     int theta2;
     int theta3;
     int index;
+
+    double const matrix_pos[ROWS][COLS] = 
+    {
+        {0,0,0},
+        {0,0,0},
+        {0,0,0}
+    };
+
+    int isEmpty(double const matrix[ROWS][COLS]){
+        int accumulo = 0;
+        for(int i=0;i<ROWS;i++){
+            for(int j=0;j<COLS;j++){
+                accumulo += this->matrix_pos[i][j];
+            }
+        }
+        if(accumulo != 0){
+            return 0;
+        }else{
+            return 1;
+        }
+    }
     double speed_der[3]; //vel_x, vel_y, rotazione
     MotorSoccer motor[];
 };

@@ -1,43 +1,43 @@
 
 #include <math.h>
 #define LEN 1
+#define ROWS 3
+#define COLS 3
 
 
 class Data{
     public:
     //costructor
     Data(int theta1, int theta2, int theta3){
-        this->theta_1 = theta1;
-        this->theta_2 = theta2;
-        this->theta_3 = theta3;
-        this->row = 3;
-        this->col = 3;
-        this->cinematic_matrix = (double**)malloc(sizeof(double*)*this->row);
-        for(int i=0; i<this->row; i++){
-            this->cinematic_matrix[i] = (double*)malloc(sizeof(double)*this->col);
+        this->t1 = theta1;
+        this->t2 = theta2;
+        this->t3 = theta3;
+        this->matrix = (double**)malloc(sizeof(double*)*ROWS);
+        for(int i=0;i<ROWS;i++){
+            this->matrix[i] = (double*)malloc(sizeof(double)*COLS);
         }
     }
     //method
-    double **matrix_speed(){
-        cinematic_matrix[0][0] = -sin(this->theta_1);
-        cinematic_matrix[0][1] = -sin(this->theta_2);
-        cinematic_matrix[0][2] = -sin(this->theta_3);
+    /*
+    This matrix: with speeds of motors --> positions of motors
+    Inverse matrix: with positions of motors --> speeds of motors
+    */
+    double **matrixSpeed(){
+        this->matrix[0][0] = -sin(this->t1);
+        this->matrix[0][1] = -sin(this->t2);
+        this->matrix[0][2] = -sin(this->t3);
 
-        cinematic_matrix[1][0] = cos(this->theta_1);
-        cinematic_matrix[1][1] = cos(this->theta_2);
-        cinematic_matrix[1][2] = cos(this->theta_3);
+        this->matrix[1][0] = cos(this->t1);
+        this->matrix[1][1] = cos(this->t2);
+        this->matrix[1][2] = cos(this->t3);
 
-        cinematic_matrix[2][0] = LEN;
-        cinematic_matrix[2][1] = LEN;
-        cinematic_matrix[2][2] = LEN;
+        this->matrix[2][0] = LEN;
+        this->matrix[2][1] = LEN;
+        this->matrix[2][2] = LEN;
 
-        return cinematic_matrix;
+        return this->matrix;
     }
     private:
-    int theta_1;
-    int theta_2;
-    int theta_3;
-    double **cinematic_matrix;
-    int row;
-    int col;
+    int t1,t2,t3;
+    double **matrix;
 };
