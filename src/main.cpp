@@ -1,6 +1,5 @@
 
 #include "platform.hpp"
-#include "driver_soccer.hpp"
 #include <iostream>
 
 int main(){

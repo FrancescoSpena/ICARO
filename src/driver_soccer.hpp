@@ -42,12 +42,14 @@ class DriverSoccer{
         double temp = 0.0;
         for(int i=0; i < ROWS; i++){
             for(int j=0;j<COLS;j++){
-                printf("Value [%d][%d]", i,j);
+                printf("Value [%d][%d] = ", i,j);
                 scanf("%lf", &temp);
                 this->matrix_pos[i][j] = temp;
                 temp = 0;
             }
         }
+        printf("New matrix:\n");
+        printMatrix();
     }
     void driver_reset(){
         for(int i=0;i<ROWS;i++){
@@ -80,6 +82,15 @@ class DriverSoccer{
         }else{
             return 1;
         }
+    }
+    void printMatrix(){
+        for(int i=0;i<ROWS;i++){
+            for(int j=0;j<COLS;j++){
+                printf("%lf\t", this->matrix_pos[i][j]);
+            }
+            printf("\n");
+        }
+        printf("\n");
     }
     double speed_der[3]; //vel_x, vel_y, rotazione
     MotorSoccer motor[];
