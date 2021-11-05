@@ -33,18 +33,24 @@ class DriverSoccer{
     void driver_handle(){
         if(isEmpty(this->matrix_pos)){
             printf("Attention: Change values of matrix");
-        }
+            return;
+        }else{
 
+        }
     }
     void driver_changeMatrix(){
+        double temp = 0.0;
         for(int i=0; i < ROWS; i++){
             for(int j=0;j<COLS;j++){
-                
+                printf("Value [%d][%d]", i,j);
+                scanf("%lf", &temp);
+                this->matrix_pos[i][j] = temp;
+                temp = 0;
             }
         }
     }
     void driver_reset(){
-        for(int i=0;i<3;i++){
+        for(int i=0;i<ROWS;i++){
             this->speed_der[i] = 0;
         }
         driver_handle();
@@ -55,7 +61,7 @@ class DriverSoccer{
     int theta3;
     int index;
 
-    double const matrix_pos[ROWS][COLS] = 
+    double matrix_pos[ROWS][COLS] = 
     {
         {0,0,0},
         {0,0,0},
