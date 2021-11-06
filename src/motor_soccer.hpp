@@ -3,11 +3,13 @@
  * @author Francesco Spena
 **/
 
+#pragma once
+#include "motor.hpp"
 #define NUM_PIN 3
 
 #include <iostream>
 
-class MotorSoccer{
+class MotorSoccer: Motor{
     public:
     //costructor
     //dirA, dirB, pwm
