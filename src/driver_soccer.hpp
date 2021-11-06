@@ -7,6 +7,7 @@
 
 class DriverSoccer{
     public:
+    //costructor
     DriverSoccer(int theta1, int theta2, int theta3){
         this->speed_der[0] = 0;
         this->speed_der[1] = 0;
@@ -16,20 +17,24 @@ class DriverSoccer{
         this->theta2 = theta2;
         this->theta3 = theta3;
     }
+    //add motor in driver
     void driver_addMotor(MotorSoccer motor){
         this->motor[index] = motor;
         index++;
     }
+    //add 3 motors in driver
     void driver_addMotors(MotorSoccer motor1, MotorSoccer motor2, MotorSoccer motor3){
         this->motor[0] = motor1;
         this->motor[1] = motor2;
         this->motor[2] = motor3;
     }
+    //set the direction of platform
     void driver_setSpeed(double x, double y, double theta){
         this->speed_der[0] = x;
         this->speed_der[1] = y;
         this->speed_der[2] = theta;
     }
+    //change the speed of platform
     void driver_handle(){
         if(isEmpty(this->matrix_pos)){
             printf("Attention: Change values of matrix");
@@ -38,6 +43,7 @@ class DriverSoccer{
             //TODO
         }
     }
+    //change the kinematic matrix
     void driver_changeMatrix(){
         double temp = 0.0;
         for(int i=0; i < ROWS; i++){
@@ -51,6 +57,7 @@ class DriverSoccer{
         printf("New matrix:\n");
         printMatrix();
     }
+    //reset direction of platform
     void driver_reset(){
         for(int i=0;i<ROWS;i++){
             this->speed_der[i] = 0;
@@ -70,6 +77,7 @@ class DriverSoccer{
         {0,0,0}
     };
 
+    //check if the matrix is not set
     int isEmpty(double const matrix[ROWS][COLS]){
         int accumulo = 0;
         for(int i=0;i<ROWS;i++){
@@ -83,6 +91,7 @@ class DriverSoccer{
             return 1;
         }
     }
+    //print kinematic matrix
     void printMatrix(){
         for(int i=0;i<ROWS;i++){
             for(int j=0;j<COLS;j++){

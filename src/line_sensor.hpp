@@ -3,10 +3,10 @@
 class LineSensor: public Sensor{
     public:
     void sensor_init(){
-
+        //TODO
     }
     void sensor_handle(){
-
+        //TODO
     }
     private:
     double x;

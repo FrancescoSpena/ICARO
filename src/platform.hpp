@@ -7,5 +7,7 @@
 
 class Platform{
     public:
+    //TODO
     private:
+    //TODO
 };

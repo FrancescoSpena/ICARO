@@ -9,6 +9,7 @@
 
 class MotorSoccer{
     public:
+    //costructor
     //dirA, dirB, pwm
     MotorSoccer(int *pin){
         this->pin_dirA = pin[0];
@@ -19,6 +20,7 @@ class MotorSoccer{
         this->pwm = 0;
         motor_init(pin);
     }
+    //costructor
     MotorSoccer(int pin_dirA, int pin_dirB, int pin_pwm){
         this->pin_dirA = pin_dirA;
         this->pin_dirB = pin_dirB;
@@ -29,6 +31,7 @@ class MotorSoccer{
         motor_init(pin_dirA,pin_dirB,pin_pwm);
     }
     //public method
+    //set speed of single motor
     void motor_setSpeed(int speed){
         if(speed >= 0){
             this->speed = speed;
@@ -42,6 +45,7 @@ class MotorSoccer{
             this->speed = 255;
         }
     }
+    //write on pin new speeds
     void motor_handle(){
         /*
         digitalWrite(this->pin_dirA,this->dir);
@@ -61,12 +65,14 @@ class MotorSoccer{
     int speed;
     int pwm;
 
+    //inizialized pin of motor
     void motor_init(int *pin){
         for(int i=0;i<NUM_PIN;i++){
             //pinMode(pin[i],OUTPUT);
             //analogWrite(pin[i],0);
         }
     }
+    //inizialized pin of motor
     void motor_init(int pin_dirA, int pin_dirB, int pin_pwm){
         /*
         pinMode(pin_dirA,OUTPUT);

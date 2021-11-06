@@ -20,7 +20,7 @@ class Data{
     }
     //method
     /*
-    This matrix: with speeds of motors --> positions of motors
+    return matrix: with speeds of motors --> positions of motors
     Inverse matrix: with positions of motors --> speeds of motors
     */
     double **matrixSpeed(){
@@ -44,7 +44,9 @@ class Data{
     int t1,t2,t3;
     double **matrix;
 
-    /*La funzione fa schifo ma la più semplice che mi viene*/
+    /*
+    check if the values is corrent for not configuration allowed
+    (La funzione fa schifo ma la più semplice che mi viene)*/
     int control_value(){
         if(this->t1 != 0 && this->t1 != M_PI){
             if(this->t2 != 0 && this->t2 != M_PI){
@@ -55,6 +57,7 @@ class Data{
         }
         return 0;
     }
+    //initialized the matrix with all values = 0
     void matrix_init(){
         for(int i=0;i<ROWS;i++){
             for(int j=0;j<COLS;j++){
