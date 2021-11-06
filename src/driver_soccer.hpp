@@ -40,7 +40,17 @@ class DriverSoccer{
             printf("Attention: Change values of matrix");
             return;
         }else{
-            //TODO
+            for(int i=0;i<ROWS;i++){
+                double speed = 0;
+                for(int j=0;j<COLS;j++){
+                    speed += this->matrix_pos[i][j]*this->speed_der[j];
+                }
+                this->motor[i].motor_setSpeed(speed*255);
+            }
+
+            for(int i=0;i<ROWS;i++){
+                this->motor[i].motor_handle();
+            }
         }
     }
     //change the kinematic matrix
